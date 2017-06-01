@@ -21,6 +21,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     # Default webpage to show
     url(r'', include('rolodex.urls'), name='index'),
+
     # All urls starting with rolodex goes to the rolodex app
     url(r'^rolodex/', include('rolodex.urls')),
 

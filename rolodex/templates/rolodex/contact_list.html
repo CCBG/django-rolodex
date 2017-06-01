@@ -10,8 +10,10 @@
 
 
 
+{% comment %}
 # Build a table of contacts, first the table header and then below
 # iterating through each of the contacts.
+{% endcomment %}
 
 <div class="row">
  <div class=" col-md-4">
@@ -19,6 +21,7 @@
   <tr>
     <th>Name</th>
     <th>Company</th>
+    <th></th>
     <th></th>
     <th></th>
    </tr>
@@ -32,6 +35,7 @@
    <td> {{ contact.company.name }} </td>
    <td> <a href={% url 'contact_edit' contact.id %} class="btn btn-info" id="contact_edit"  > Edit </button></td>
    <td> <a href={% url 'contact_delete' contact.id %} class="btn btn-danger" id="contact_delete"  > Delete </button></td>
+   <td> {{ contact.note }} </td>
 {% comment %}
 {% endcomment %}
 

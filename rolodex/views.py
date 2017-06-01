@@ -127,12 +127,12 @@ def contact_add( request, company_name = None ):
         return render( request, "rolodex/contact_add.html", context)
 
 @login_required(login_url='/login/')
-def contact_edit( request ):
-    contact = Models.Contact.objects.get( name__exact = contact_name )
+def contact_edit( request, contact_id ):
+    contact = Models.Contact.objects.get( pk = contact_id )
 
     if request.method == 'POST':
 
-        contact_form = Forms.ContactForm(request.POST, instance=contact)
+        contact_form = Forms.ContactForm(request.POST, instance=contact )
 
         if contact_form.is_valid():
 
@@ -148,7 +148,8 @@ def contact_edit( request ):
         contact_form = Forms.ContactForm( instance = contact )
 
 
-        return render( request, 'rolodex/contact_edit.html', { 'contact_form': contact_form })
+        return render( request, 'rolodex/contact_edit.html', { 'contact_form': contact_form,
+                                                               'contact_id' : contact_id })
 
 def contact_list( request, company_name = None ):
 

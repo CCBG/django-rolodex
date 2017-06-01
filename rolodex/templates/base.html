@@ -86,10 +86,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-2 sidebar">
+          {% block side_block %}
     {% comment %}
        This is the leftside navigation bar
     {% endcomment %}
-          {% block side_block %}
 	    <ul class="list-unstyled">
 
             <li><a href="{% url 'company_list' %}" class='btn btm-sm alert-info btn-block' width=130>Companies</a></li>
@@ -103,17 +103,17 @@
             <li><a href="{% url 'doc_notes' %}" class='btn btm-sm alert-info btn-block' width=130>Notes</a></li>
 
 	    </ul>
-	  {% endblock %}
 
+	  {% endblock %}
         </div>
         <div class="col-sm-9 col-sm-offset-2 col-md-10 col-md-offset-2 main">
-
     {% comment %}
        And the main block, empty for now
     {% endcomment %}
            {% block body_block %}
 
 	   {% endblock %}
+
         </div>
       </div>
     </div>

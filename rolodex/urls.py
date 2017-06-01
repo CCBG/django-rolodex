@@ -14,7 +14,7 @@ urlpatterns = patterns('',
                        # company related urls
                        url(r'^contact/add/$', views.contact_add, name='contact_add'),
                        url(r'^contact/add/(?P<company_name>[A-Za-z0-9.\- ]+)/$', views.contact_add, name='contact_add'),
-                       url(r'^contact/edit/(?P<contact_name>[A-Za-z0-9.\- ]+)/$', views.contact_edit, name='contact_edit'),
+                       url(r'^contact/edit/(?P<contact_id>[0-9]+)/$', views.contact_edit, name='contact_edit'),
                        url(r'^contact/list/$', views.contact_list, name='contact_list'),
                        url(r'^contact/list/(?P<company_name>[A-Za-z0-9.\- ]+)/$', views.contact_list, name='contact_list'),
                        url(r'^contact/delete/(?P<contact_id>[0-9]+)/$', views.contact_delete, name='contact_delete'),
