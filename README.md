@@ -2,6 +2,8 @@
 
 Small Django example project to teach and show some generic solutions to django problems. Some of the core files have been changed to make it easier to deploy the system in a production environment as described below in section **django-modifications**
 
+The bulk of the documentation is located within the django-app, and this document describes the initial steps on how to get the app up and running
+
 
 ## Intallation/setup
 
@@ -32,9 +34,12 @@ git clone git@github.com:CCBG/django-rolodex.git
 ```
 
 
-### initialise the databases/
+### initialise the databases
 
-The django-rolodex reliant on two databases, one for users and sessions, and the other contains the rolodex specific information. To initialise the databases:
+The django-rolodex reliant on two databases, one for users and sessions, and the other contains the rolodex specific information. The database information for the rolodex app is located in *rolodex/models.py*. Parts of the app have restricted access so you will need to create a (super)user to access those parts of the database.
+
+
+To initialise the databases and add a user do the following:
 
 ```bash
 # update the definitions of the database if any changes have been made
@@ -45,6 +50,10 @@ python manage migrate
 
 # And the rolodex specific database:
 python manage migrate --database=rolodex_db
+
+# And create a superuser:
+python manage createsuperuser
+
 
 ```
 
