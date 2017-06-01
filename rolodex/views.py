@@ -37,6 +37,7 @@ def company_add( request ):
 
         else:
 
+            pp.pprint (company_form.errors)
 
             # The supplied form contained errors - re-render the page with the errors
             return render( request, 'rolodex/company_add.html', { 'company_form': company_form })
@@ -141,7 +142,8 @@ def contact_edit( request, contact_id ):
             return HttpResponseRedirect(reverse( "contact_list"))
 
         else:
-            return render( request, 'rolodex/contact_edit.html', { 'contact_form': contact_form})
+            return render( request, 'rolodex/contact_edit.html', { 'contact_form': contact_form,
+                                                                   'contact_id' : contact_id})
         
     else:
 

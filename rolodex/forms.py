@@ -16,6 +16,16 @@ class CompanyForm( ModelForm ):
         model = Models.Company
         fields = ['name',]#'__all__'
 
+    def clean_name(self):
+        cleaned_data = self.cleaned_data
+
+        name =  cleaned_data['name']
+
+        prev_instance = Models.Company.objects.get( name__exact = name)
+        if ( prev_instance ):
+            raise forms.ValidationError("Not a unique company name!" )
+
+
 
 class ContactForm( ModelForm ):
     """
@@ -28,3 +38,12 @@ class ContactForm( ModelForm ):
         model = Models.Contact
         fields = ['name','company', 'note']
 
+
+    def clean_name(self):
+        cleaned_data = self.cleaned_data
+
+        name =  cleaned_data['name']
+
+        prev_instance = Models.Contact.objects.get( name__exact = name)
+        if ( prev_instance ):
+            raise forms.ValidationError("Not a unique contact name, {name} is currently working for {company}".format(name= name, company=prev_instance.company.name ))
