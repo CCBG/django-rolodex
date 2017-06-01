@@ -41,7 +41,7 @@ if ( DEBUG == False):
 INSTALLED_APPS = [
     'rolodex',          # The apps we are developing
     'widget_tweaks', # Makes rendering forms a lot easier
-#    'debug_toolbar', # Awesome for debugging django sites
+    'debug_toolbar', # Awesome for debugging django sites
     # Standard stuff
     'django.contrib.admin',
     'django.contrib.auth',
