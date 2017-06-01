@@ -20,6 +20,7 @@ def index(request):
 
 
 # company related urls
+@login_required(login_url='/login/')
 def company_add( request ):
 
     if request.method == 'POST':
@@ -46,6 +47,7 @@ def company_add( request ):
         return render( request, "rolodex/company_add.html", {'company_form': company_form})
 
 
+@login_required(login_url='/login/')
 def company_edit( request, company_name ):
 
     company = Models.Company.objects.get( name__exact = company_name )
@@ -79,6 +81,7 @@ def company_list( request ):
 
     return render( request, 'rolodex/company_list.html', {'companies': companies});
 
+@login_required(login_url='/login/')
 def company_delete( request, company_name ):
 
     company = Models.Company.objects.get( name__exact = company_name )
@@ -97,6 +100,7 @@ def company_delete( request, company_name ):
 
 
 
+@login_required(login_url='/login/')
 def contact_add( request, company_name = None ):
     if request.method == 'POST':
         contact_form = Forms.ContactForm( request.POST )
@@ -122,6 +126,7 @@ def contact_add( request, company_name = None ):
         
         return render( request, "rolodex/contact_add.html", context)
 
+@login_required(login_url='/login/')
 def contact_edit( request ):
     contact = Models.Contact.objects.get( name__exact = contact_name )
 
@@ -158,6 +163,7 @@ def contact_list( request, company_name = None ):
     return render( request, 'rolodex/contact_list.html', {'contacts': contacts});
 
 
+@login_required(login_url='/login/')
 def contact_delete( request, contact_id ):
 
     contact = Models.Contact.objects.get( pk = contact_id )
