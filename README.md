@@ -51,3 +51,20 @@ python manage migrate --database=rolodex_db
 Django knows when to use what database by use the django_example/router.py file that tells it to use the rolodex_db for anything related to the rolodex app, and for everything else use the default database.
 
 ### run the django development server
+
+It is quite simple to run the development server, in the django-rolodex directory:
+
+```bash
+# update the definitions of the database if any changes have been made
+python manage runserver
+```
+and point your webbrowser to: **http://localhost:8000/**, django will complain if something else is running on that port, in that case to run django on an alternative port, eg 8080:
+
+```bash
+# update the definitions of the database if any changes have been made
+python manage runserver 8080
+```
+and point your webbrowser to: **http://localhost:8080/**
+
+
+As the server is running in development mode, the debug bar is running, it should be on the right side of the 
